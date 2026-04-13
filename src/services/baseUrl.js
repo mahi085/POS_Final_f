@@ -1,3 +1,3 @@
-const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const baseUrl = import.meta.env.VITE_API_URL || "https://pos-final-b-ooir.onrender.com/api";
 
 export default baseUrl;
