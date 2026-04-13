@@ -97,9 +97,53 @@ PRINT 1
     }
   };
 
-  const printBarcode = () => {
-    printBarcodeUniversal(product.name, product.barcode);
-  };
+ const printBarcode = () => {
+  const barcodeHTML = `
+  <html>
+  <head>
+  <style>
+  @media print {
+    body {
+      width: 58mm;
+      margin: 0;
+      text-align: center;
+      font-family: Arial;
+    }
+    img {
+      width: 100%;
+    }
+    p {
+      margin: 5px 0;
+    }
+  }
+  </style>
+  </head>
+
+  <body>
+
+  <div>
+    <p>${product.name}</p>
+
+    <img src="${baseUrl}/product/generateBarcode/${product.barcode}" />
+
+    <p>${product.barcode}</p>
+  </div>
+
+  <script>
+    window.onload = function() {
+      window.print();
+      window.close();
+    }
+  </script>
+
+  </body>
+  </html>
+  `;
+
+  const win = window.open("", "", "width=300,height=400");
+  win.document.write(barcodeHTML);
+  win.document.close();
+};
 
   const printBarcodeOnly = () => {
     printBarcodeUniversal("", barcodeOnly);

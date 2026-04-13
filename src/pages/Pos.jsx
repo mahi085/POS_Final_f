@@ -284,6 +284,7 @@ function POS() {
 
   const total = subtotal - discountAmount;
 
+ 
   return (
     <div className="min-h-screen bg-gray-100 p-2">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -443,12 +444,12 @@ function POS() {
             </div>
           </div>
 
-          <button
-            onClick={createSale}
-            className="mt-6 w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg text-lg cursor-pointer"
-          >
-            Generate Bill
-          </button>
+         <button onClick={() => {
+  createSale();
+  printBill();
+}} className="mt-6 w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg text-lg cursor-pointer">
+  Generate Bill
+</button>
         </div>
       </div>
     </div>
